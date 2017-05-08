@@ -11,7 +11,7 @@ node ('docker') {
 
   stage('Build RTP Engine') {
     def container = docker.image('rtpengine_container')
-    container.inside('-v ${JENKINS_HOME}:/git') {
+    container.inside('-u 0 -v ${JENKINS_HOME}:/git') {
       sh './debian/flavors/no_ngcp'
       sh 'dpkg-buildpackage'
     }
