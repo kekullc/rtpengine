@@ -11,4 +11,4 @@ WORKDIR /git
 
 VOLUME ["/git"]
 
-CMD ["/bin/sh]
+CMD ["/bin/sh"]
