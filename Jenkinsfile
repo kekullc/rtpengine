@@ -29,6 +29,6 @@ node ('docker') {
   }
 
   stage('Publish to Bintray') {
-    sh 'for i in $(find -name "*.deb" -type f -exec basename {} \;); do curl -X PUT -T $i -uavinogradov:3448eb8ea80b5e0f11624f776c92632596c0f930 -H "X-Bintray-Package:ngcp-rtpengine" -H "X-Bintray-Version:5.2.1" -H "X-Bintray-Debian-Distribution:xenial" -H "X-Bintray-Debian-Component:main" -H "X-Bintray-Debian-Architecture:amd64" -H "X-Bintray-Publish:1" -H "X-Bintray-Override:1" -H "X-Bintray-Explode:0" https://api.bintray.com/content/stanacard/ngcp-rtpengine/main/n/ngcp-rtpengine/' + RTPver + '/$i; done'
+    sh 'for i in $(find -name "*.deb" -type f | cut -c3-); do curl -X PUT -T $i -uavinogradov:3448eb8ea80b5e0f11624f776c92632596c0f930 -H "X-Bintray-Package:ngcp-rtpengine" -H "X-Bintray-Version:5.2.1" -H "X-Bintray-Debian-Distribution:xenial" -H "X-Bintray-Debian-Component:main" -H "X-Bintray-Debian-Architecture:amd64" -H "X-Bintray-Publish:1" -H "X-Bintray-Override:1" -H "X-Bintray-Explode:0" https://api.bintray.com/content/stanacard/ngcp-rtpengine/main/n/ngcp-rtpengine/' + RTPver + '/$i; done'
   }
 }
